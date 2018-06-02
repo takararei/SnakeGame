@@ -38,9 +38,11 @@ public class SnakeController : MonoBehaviour {
         {
             for (int i = 0; i < 2; i++)
             {
-                try
-                { temp = joystick.JoystickAxis; }
-                catch (Exception e) { return; }
+                //try
+                //{ 
+                    temp = joystick.JoystickAxis; 
+                //}
+                //catch (Exception e) { return; }
 
                 if (temp != Vector3.zero)
                 {

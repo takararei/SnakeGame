@@ -109,6 +109,7 @@
      <Compile Include="Assets\Scripts\003Scripts\SnakeTriggerEnter.cs" />
      <Compile Include="Assets\Scripts\003Scripts\SpeedUp.cs" />
      <Compile Include="Assets\Scripts\003Scripts\UIController.cs" />
+     <Compile Include="Assets\Scripts\AIScripts\AIintelligence.cs" />
      <Compile Include="Assets\Scripts\AIScripts\AISnakeController.cs" />
      <Compile Include="Assets\Scripts\LoadScenes.cs" />
      <None Include="Assets\EasyTouch\Readme_first.txt" />
