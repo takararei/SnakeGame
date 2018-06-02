@@ -10,10 +10,10 @@ public class AISnakeController : MonoBehaviour {
     public int AISnakeLength;
     private string AISkin;
     public bool isDie=false;
-  
 	// Use this for initialization
     void Awake()
     {
+        transform.rotation = Quaternion.Euler(GetRotation(Vector3.zero)); 
         Direction = new Vector3(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), 0f);
         instance = GameObject.Find("GameManager").GetComponent<GameManager>();
         AISkin = instance.AISkin[Random.Range(0, instance.AISkin.Length)];
@@ -23,6 +23,17 @@ public class AISnakeController : MonoBehaviour {
         instance.CreateSnake(AISkin,this.gameObject,Body);	
 	}
 	
+    void ReStart()
+    {
+        Direction = new Vector3(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), 0f);
+        if (GetRotation(Direction) != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Euler(GetRotation(Direction));
+        }
+        AISkin = instance.AISkin[Random.Range(0, instance.AISkin.Length)];
+        instance.CreateSnake(AISkin, this.gameObject, Body);
+    }
+
 	// Update is called once per frame
 	void FixedUpdate () {
         
@@ -124,4 +135,65 @@ public class AISnakeController : MonoBehaviour {
         //    }
         //}
     }
+
+    public void ForwardObs()
+    {
+        GetNewSpeed();
+        GetNewDirection();
+    }
+
+    void GetNewSpeed()
+    {
+        float x, y;
+        x = Direction.x;
+        y = Direction.y;
+        if(x>0)
+        {
+            x = Random.Range(-1f, 0f);
+        }
+        else
+        {
+            x = Random.Range(0f, 1f);
+        }
+
+        if (y > 0)
+        {
+            y = Random.Range(-1f, 0f);
+        }
+        else
+        {
+            y = Random.Range(0f, 1f);
+        }
+        //y = Random.Range(-1f, 1f);
+        Direction = new Vector3(x,y,0);
+
+    }
+
+    void GetNewDirection()
+    {
+
+    }
+
+    IEnumerator SnakeBorn()
+    {
+        if(isDie)
+        {
+            yield return new WaitForSeconds(2);
+            Debug.Log("重生成");
+            isDie = false;
+            transform.position = new Vector3(Random.Range(100, 2400), Random.Range(100, 1200), 0);
+            Awake();
+            Start();
+        }
+        
+    }
+    public void AddSnake()
+    {
+        StartCoroutine(SnakeBorn());
+        //Debug.Log("重生成");
+        //isDie = false;
+        //transform.position = Vector3.zero;
+        //ReStart();
+    }
+
 }

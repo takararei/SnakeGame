@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour {
         GameObject body;
         for(int i=0;i<_Data.SnakeLength;i++)
         {
-            if(i%3==0&&i!=0)
+           
+            if (i % 3 == 0 && i != 0)
             {
                 body = Instantiate(SnakeBody[CheckSkin(str)]);
             }
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour {
             }
             body.transform.SetParent(Body.transform);
             body.transform.position = new Vector3(head.transform.position.x - (i + 1) * 12, head.transform.position.y, 0);
+            body.transform.localScale = Vector3.one;
         }
         
     }
@@ -103,25 +105,36 @@ public class GameManager : MonoBehaviour {
         else if (Head.parent.GetComponent<AISnakeController>())
         {
             _body = Head.parent.GetComponent<AISnakeController>().Body;
+            Head.parent.GetComponent<AISnakeController>().AddSnake();
         }
         else
         {
             Debug.Log("异常");
         }
         int childCount = _body.transform.childCount;
+        int t = 0;
         for(int i=0;i<childCount;i++)
         {
-            if(i%3!=0)
+            if (_body.transform.GetChild(i).name.Substring(0, 10) == "SnakeEmpty")
             {
-                Debug.Log("删除空");
                 Destroy(_body.transform.GetChild(i).gameObject);
             }
             else
             {
-                Debug.Log("测试");
                 _body.transform.GetChild(i).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(32.23f * 0.7f, 32.23f * 0.7f);
-                
             }
+            //if (i % 3 != 0)
+            //{
+            //    Debug.Log("空" + _body.transform.GetChild(i).name);
+            //    Destroy(_body.transform.GetChild(i).gameObject);
+                
+            //}
+            //else
+            //{
+            //    Debug.Log("非空" + _body.transform.GetChild(i).name);
+            //    _body.transform.GetChild(i).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(32.23f * 0.7f, 32.23f * 0.7f);
+                
+            //}
         }
         childCount = _body.transform.childCount;
         for (int j = 0; j < childCount;j++ )
@@ -130,5 +143,15 @@ public class GameManager : MonoBehaviour {
             _body.transform.GetChild(0).SetParent(Nodes.transform);
         }
         Destroy(Head.gameObject);
+
+        //if (Head.parent.GetComponent<AISnakeController>())
+        //{
+        //    Head.parent.GetComponent<AISnakeController>().AddSnake();
+        //}
+
     }
+
+
+
+
 }
