@@ -25,9 +25,16 @@ public class SnakeTriggerEnter : MonoBehaviour {
         switch(other.tag)
         {
             case _Data.obs:
-                Debug.Log("死了");
-                _Data.isGameOver = true;
-                
+                if(transform.parent.GetComponent<SnakeController>())
+                {
+                    _Data.isGameOver = true;
+                    Debug.Log("死了");
+                }
+                else if (transform.parent.GetComponent<AISnakeController>())
+                {
+                    transform.parent.GetComponent<AISnakeController>().isDie = true;
+                    Debug.Log("AI死亡");
+                }
                 break;
             case _Data._Food:
                 Destroy(other.gameObject);

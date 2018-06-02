@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour {
         {
             temp = Instantiate(SnakeEmpty);
         }
+        if(Body.name.Substring(0,1)=="A")
+        {
+            
+        }
         _Data.MySnakeLength++;
         //temp.transform.parent = Body.transform;
         temp.transform.SetParent(Body.transform);
