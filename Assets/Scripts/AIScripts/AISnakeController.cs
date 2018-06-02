@@ -7,7 +7,7 @@ public class AISnakeController : MonoBehaviour {
     private Vector3 Direction;
     private GameManager instance;
     public GameObject Body;
-    private int AISnakeLength;
+    public int AISnakeLength;
     private string AISkin;
     public bool isDie=false;
   

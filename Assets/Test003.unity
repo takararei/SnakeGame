@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 512182100}
   - component: {fileID: 512182101}
   m_Layer: 5
-  m_Name: SnakeAI (1)
+  m_Name: SnakeAI1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -813,6 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   Body: {fileID: 601305979}
+  AISnakeLength: 0
   isDie: 0
 --- !u!1 &515389729
 GameObject:
@@ -824,7 +825,7 @@ GameObject:
   - component: {fileID: 515389730}
   - component: {fileID: 515389731}
   m_Layer: 5
-  m_Name: SnakeAI (6)
+  m_Name: SnakeAI6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,6 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   Body: {fileID: 1921899387}
+  AISnakeLength: 0
   isDie: 0
 --- !u!1 &522650089
 GameObject:
@@ -872,7 +874,7 @@ GameObject:
   - component: {fileID: 522650090}
   - component: {fileID: 522650091}
   m_Layer: 5
-  m_Name: SnakeAI (2)
+  m_Name: SnakeAI2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,6 +911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   Body: {fileID: 71897270}
+  AISnakeLength: 0
   isDie: 0
 --- !u!1 &537146554
 GameObject:
@@ -920,7 +923,7 @@ GameObject:
   - component: {fileID: 537146555}
   - component: {fileID: 537146556}
   m_Layer: 5
-  m_Name: SnakeAI (5)
+  m_Name: SnakeAI5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,6 +960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   Body: {fileID: 2095807054}
+  AISnakeLength: 0
   isDie: 0
 --- !u!1 &553498122
 GameObject:
@@ -1152,7 +1156,7 @@ GameObject:
   - component: {fileID: 1074350585}
   - component: {fileID: 1074350586}
   m_Layer: 5
-  m_Name: SnakeAI (3)
+  m_Name: SnakeAI3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,6 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   Body: {fileID: 411256542}
+  AISnakeLength: 0
   isDie: 0
 --- !u!1 &1174762523
 GameObject:
@@ -2427,7 +2432,7 @@ GameObject:
   - component: {fileID: 2012965849}
   - component: {fileID: 2012965850}
   m_Layer: 5
-  m_Name: SnakeAI (4)
+  m_Name: SnakeAI4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2464,6 +2469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   Body: {fileID: 678007179}
+  AISnakeLength: 0
   isDie: 0
 --- !u!1 &2030976901
 GameObject:
@@ -2516,6 +2522,14 @@ MonoBehaviour:
   - "\u7D2B\u7EA2"
   - "\u5927\u7EA2"
   - "\u5C0F\u9EC4"
+  SnakeAI:
+  - {fileID: 512182099}
+  - {fileID: 522650089}
+  - {fileID: 1074350584}
+  - {fileID: 2012965848}
+  - {fileID: 537146554}
+  - {fileID: 515389729}
+  Nodes: {fileID: 2096781524}
 --- !u!4 &2030976903
 Transform:
   m_ObjectHideFlags: 0

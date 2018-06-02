@@ -35,6 +35,7 @@ public class SnakeTriggerEnter : MonoBehaviour {
                     transform.parent.GetComponent<AISnakeController>().isDie = true;
                     Debug.Log("AI死亡");
                 }
+                instance.DeleteSnakeBody(gameObject.transform);
                 break;
             case _Data._Food:
                 Destroy(other.gameObject);

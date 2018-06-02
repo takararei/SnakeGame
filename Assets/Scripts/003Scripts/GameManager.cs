@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     //public GameObject Body;
     public GameObject SnakeEmpty;
     public string[] AISkin = new string[] { "小篮", "亲色", "小绿", "紫红", "大红", "小黄" };
+    public GameObject[] SnakeAI;
+    public GameObject Nodes;
     public void CreateSnake(string str,GameObject SnakeBlue,GameObject Body)
     {
         GameObject head = Instantiate(SnakeHead[CheckSkin(str)]);
@@ -74,13 +76,59 @@ public class GameManager : MonoBehaviour {
         {
             temp = Instantiate(SnakeEmpty);
         }
-        if(Body.name.Substring(0,1)=="A")
+        if (Body.name.Substring(0, 1) == "A")
         {
-            
+            string t = Body.name.Substring(Body.name.Length - 2, 1);
+            int tempindex= int.Parse(t);
+            SnakeAI[tempindex - 1].GetComponent<AISnakeController>().AISnakeLength++;
         }
-        _Data.MySnakeLength++;
+        else
+        {
+            _Data.MySnakeLength++;
+        }
+        
         //temp.transform.parent = Body.transform;
         temp.transform.SetParent(Body.transform);
         temp.transform.localScale = Vector3.one;
+    }
+
+    //蛇死亡后 身体变成食物
+    public void DeleteSnakeBody(Transform Head)
+    {
+        GameObject _body = null;
+        if (Head.parent.GetComponent<SnakeController>())
+        {
+            _body = Head.parent.GetComponent<SnakeController>().body;
+        }
+        else if (Head.parent.GetComponent<AISnakeController>())
+        {
+            _body = Head.parent.GetComponent<AISnakeController>().Body;
+        }
+        else
+        {
+            Debug.Log("异常");
+        }
+        int childCount = _body.transform.childCount;
+        for(int i=0;i<childCount;i++)
+        {
+            if(i%3!=0)
+            {
+                Debug.Log("删除空");
+                Destroy(_body.transform.GetChild(i).gameObject);
+            }
+            else
+            {
+                Debug.Log("测试");
+                _body.transform.GetChild(i).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(32.23f * 0.7f, 32.23f * 0.7f);
+                
+            }
+        }
+        childCount = _body.transform.childCount;
+        for (int j = 0; j < childCount;j++ )
+        {
+            _body.transform.GetChild(0).tag=_Data._Food;
+            _body.transform.GetChild(0).SetParent(Nodes.transform);
+        }
+        Destroy(Head.gameObject);
     }
 }
