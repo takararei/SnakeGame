@@ -31,22 +31,30 @@ public class SnakeTriggerEnter : MonoBehaviour {
         if (transform.parent.GetComponent<SnakeController>())
         {
             _Data.isGameOver = true;
-            Debug.Log("死了");
         }
         else if (transform.parent.GetComponent<AISnakeController>())
         {
             transform.parent.GetComponent<AISnakeController>().isDie = true;
-            Debug.Log("AI死亡");
+            
         }
         instance.DeleteSnakeBody(gameObject.transform);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        switch(other.tag)
+        if (transform.parent.GetComponent<SnakeController>()&&_Data.isGameOver)
+        {
+            return;
+        }
+        else if (transform.parent.GetComponent<AISnakeController>()&& transform.parent.GetComponent<AISnakeController>().isDie)
+        {
+            return;
+        }
+        switch (other.tag)
         {
             case _Data.obs:
                 CrashOnWallOrOtherPlayer();
+                //Debug.Log("AI撞壁" + transform.parent.name);
                 break;
             case _Data._Food:
                 Destroy(other.gameObject);
@@ -84,6 +92,7 @@ public class SnakeTriggerEnter : MonoBehaviour {
                         if (AIbodyindex != AIHeadindex)
                         {
                             CrashOnWallOrOtherPlayer();
+                            //Debug.Log("AI撞AI" + transform.parent.name+","+other.transform.parent.name);
                         }
                     }
                 }

@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("异常");
         }
         int childCount = _body.transform.childCount;
-        int t = 0;
+
         for(int i=0;i<childCount;i++)
         {
             if (_body.transform.GetChild(i).name.Substring(0, 10) == "SnakeEmpty")

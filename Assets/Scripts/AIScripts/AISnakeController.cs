@@ -179,7 +179,7 @@ public class AISnakeController : MonoBehaviour {
         if(isDie)
         {
             yield return new WaitForSeconds(2);
-            Debug.Log("重生成");
+            Debug.Log("重生成"+transform.name);
             isDie = false;
             transform.position = new Vector3(Random.Range(100, 2400), Random.Range(100, 1200), 0);
             Awake();
