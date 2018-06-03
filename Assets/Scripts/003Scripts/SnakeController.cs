@@ -22,6 +22,7 @@ public class SnakeController : MonoBehaviour {
 	void Start () 
     {
         _Data.MySnakeLength = _Data.SnakeLength;
+        _Data.MySnakeKill = _Data.SnakeKill;
         instance.CreateSnake(_Data.SkinName,this.gameObject,body);
 	}
 	

@@ -276,7 +276,9 @@
     <Compile Include="Assets\Scripts\003Scripts\_Data.cs" />
     <Compile Include="Assets\Scripts\003Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\003Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\003Scripts\NameFollowSnake.cs" />
     <Compile Include="Assets\Scripts\003Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\003Scripts\Ranking.cs" />
     <Compile Include="Assets\Scripts\003Scripts\SnakeController.cs" />
     <Compile Include="Assets\Scripts\003Scripts\SnakeTriggerEnter.cs" />
     <Compile Include="Assets\Scripts\003Scripts\SpeedUp.cs" />

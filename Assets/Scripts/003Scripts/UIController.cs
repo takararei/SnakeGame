@@ -21,5 +21,7 @@ public class UIController : MonoBehaviour {
 	void LateUpdate () {
         SnakeLength.text = "蛇的长度："+_Data.MySnakeLength.ToString();
         DieSnakeLength.text = "蛇的长度：" + _Data.MySnakeLength.ToString();
-	}
+        SnakeKill.text = "击杀数量：" + _Data.MySnakeKill;
+        DieSnakeKill.text = "击杀数量：" + _Data.MySnakeKill;
+    }
 }

@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour {
             string t = Body.name.Substring(Body.name.Length - 2, 1);
             int tempindex= int.Parse(t);
             SnakeAI[tempindex - 1].GetComponent<AISnakeController>().AISnakeLength++;
+
+            Ranking.SnakeLength[tempindex - 1]= SnakeAI[tempindex - 1].GetComponent<AISnakeController>().AISnakeLength;
         }
         else
         {

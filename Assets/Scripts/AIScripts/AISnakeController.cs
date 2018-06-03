@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AISnakeController : MonoBehaviour {
+    private int RankIndex;
     public float Speed=500;
     private Vector3 Direction;
     private GameManager instance;
@@ -13,6 +14,8 @@ public class AISnakeController : MonoBehaviour {
 	// Use this for initialization
     void Awake()
     {
+        AISnakeLength = 18;
+        RankIndex = int.Parse(gameObject.name.Substring(gameObject.name.Length-1,1));
         transform.rotation = Quaternion.Euler(GetRotation(Vector3.zero)); 
         Direction = new Vector3(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), 0f);
         instance = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -20,8 +23,9 @@ public class AISnakeController : MonoBehaviour {
     }
 
 	void Start () {
-        instance.CreateSnake(AISkin,this.gameObject,Body);	
-	}
+        instance.CreateSnake(AISkin,this.gameObject,Body);
+        Ranking.SnakeLength[RankIndex] = AISnakeLength;
+    }
 	
     void ReStart()
     {

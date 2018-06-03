@@ -74,16 +74,11 @@ public class SnakeTriggerEnter : MonoBehaviour {
                 instance.AddSnakeBody(index,Count,temp);
                 Count++;
                 break;
-            case "body":
+            case "body"://蛇头与身体相撞
                 if(time<0)
                 {
                     string otherParentName = other.transform.parent.name;
-
-                    if (this.gameObject.transform.parent.name == "SnakeBlue" && otherParentName == "body")
-                    {
-                        //就是玩家与自身碰撞 这个不要紧
-                    }
-                    else
+                    if (!(this.gameObject.transform.parent.name == "SnakeBlue" && otherParentName == "body"))
                     {
 
                         string AIbodyindex = otherParentName.Substring(otherParentName.Length - 2, 1);//AI身体的编号
@@ -91,7 +86,20 @@ public class SnakeTriggerEnter : MonoBehaviour {
                         string AIHeadindex = AIHeadName.Substring(AIHeadName.Length - 1, 1);//AI头的编号
                         if (AIbodyindex != AIHeadindex)
                         {
-                            CrashOnWallOrOtherPlayer();
+                            //CrashOnWallOrOtherPlayer();
+                            if (transform.parent.GetComponent<SnakeController>())
+                            {
+                                _Data.isGameOver = true;
+                            }
+                            else if (transform.parent.GetComponent<AISnakeController>())
+                            {
+                                transform.parent.GetComponent<AISnakeController>().isDie = true;
+                                if(other.transform.parent.name=="body")
+                                {
+                                    _Data.MySnakeKill++;
+                                }
+                            }
+                            instance.DeleteSnakeBody(gameObject.transform);
                             //Debug.Log("AI撞AI" + transform.parent.name+","+other.transform.parent.name);
                         }
                     }
